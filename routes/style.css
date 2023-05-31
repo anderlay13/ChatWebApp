@@ -99,7 +99,7 @@ body::before{
     background-color: #075e54;
     border-radius: 0px 7px 7px 0px;
     color: #fff;
-    width: 2rem;
+    /* width: 2rem; */
     /* padding: 14px; */
     border-width: 0px;
     border-style: none;

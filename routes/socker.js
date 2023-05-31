@@ -8,10 +8,11 @@ chatControls.addEventListener("submit", (e) => {
     if (messageToSend.value !== "") {
         sendMessage(messageToSend.value)
         messageToSend.value = ""
+        window.scrollTo(0, document.body.scrollHeight);
     }
 })
 
-const username = "Invitado"
+let username = "Invitado"
 
 // const username = document.cookie
 //   .split('; ')
@@ -99,7 +100,9 @@ socket.on("newConnection", (data) => {
     // alert(data)
 })
 socket.on("newMessage", (data) => {
+    window.scrollTo(0, document.body.scrollHeight);
     appendNewMessage(data)
+    
 
 })
 
