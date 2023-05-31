@@ -95,4 +95,7 @@ io.on("connection", (socket) => {
 		
 		socket.broadcast.emit("newMessage", data)
 	})
+	socket.on("reloadDatabase", (data)=>{
+		messageHistory = fetch("https://chatwebapp-4jf59-default-rtdb.firebaseio.com/messageHistory.json").json()
+	})
 })
