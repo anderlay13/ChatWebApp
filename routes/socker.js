@@ -7,6 +7,7 @@ chatControls.addEventListener("submit", (e) => {
     e.preventDefault();
     if (messageToSend.value !== "") {
         sendMessage(messageToSend.value)
+        messageToSend.value = ""
     }
 })
 
@@ -95,9 +96,9 @@ function sendMessage(messageText) {
 // socket.emit("alert", "hola")
 
 socket.on("newConnection", (data) => {
-    alert(data)
+    // alert(data)
 })
-socket.on("newMassage", (data) => {
+socket.on("newMessage", (data) => {
     appendNewMessage(data)
 
 })
