@@ -67,9 +67,8 @@ app.get("/reloadDatabase", (req, res) => {
 })
 
 app.get("/resetDatabase", (req, res) => {
-	date=getCurrentTime()
 	data={
-		[date]: { messageContent: 'Inicio de chat', senderName: '-info' }
+		'31-5-2023 20-15-15': { messageContent: 'Inicio de chat', senderName: '-info' }
 	}
 	requ = fetch("https://chatwebapp-4jf59-default-rtdb.firebaseio.com/messageHistory.json", {
 		method: 'put',
