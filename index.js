@@ -61,6 +61,13 @@ app.get("/messagehistory", (req, res) => {
 	res.json(messageHistory)
 })
 
+app.get("/reloadDatabase", (req, res) => {
+	messageHistory = fetch("https://chatwebapp-4jf59-default-rtdb.firebaseio.com/messageHistory.json").json();
+	res.json(messageHistory)
+})
+
+
+
 
 // if (requ.status != 200) {
 // 	io.sockets.emit("notify", { title: "Something went wrong", options: { body: "Saving queue got " + requ.status + " status." } })

@@ -3,12 +3,18 @@ let messageHolder = document.querySelector("#messageHolder")
 let chatControls = document.querySelector("#chatControls")
 let messageToSend = chatControls.querySelector("input")
 
+let quickestver=true
 chatControls.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (messageToSend.value !== "") {
-        sendMessage(messageToSend.value)
-        messageToSend.value = ""
+    if (messageToSend.value !== ""  ) {
+        cleanedSpecChars=messageToSend.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x00-\x7F]/g, "");
+        if (cleanedSpecChars !=="" && quickestver){
+            sendMessage(cleanedSpecChars)
+        }else if (cleanedSpecChars !==""){
+            sendMessage(messageToSend.value)
+        }
         window.scrollTo(0, document.body.scrollHeight);
+        messageToSend.value = ""
     }
 })
 
@@ -75,11 +81,14 @@ function getCurrentTime() {
     return date
 }
 
-var socket = io.connect(window.location.host);
+var socket = io();
+socket.emit("getChatHistory");
+
+let tOut=setTimeout(()=>{socket.emit("getChatHistory"); console.log("emit timeout")}, 1200)
 
 console.log("diadhawd")
-socket.emit("getChatHistory")
 socket.on("runOnceDevLoad", (chatHistory)=>{
+    clearTimeout(tOut)
     console.log("inicc dev", chatHistory)
 
     appendNewMessage(chatHistory)
@@ -109,3 +118,8 @@ socket.on("newMessage", (data) => {
 socket.on("log", (data) => {
     console.log(data)
 })
+
+// socket.emit("getChatHistory")
+
+console.log("end")
+ 
