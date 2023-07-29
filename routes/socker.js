@@ -87,12 +87,19 @@ function getCurrentTime() {
 }
 
 var socket = io();
-socket.emit("getChatHistory");
 
-let tOut=setTimeout(()=>{socket.emit("getChatHistory"); console.log("emit timeout")}, 1200)
+socket.emit("getChatHistory");
+let tOut
+
+function rtout(){
+    tOut=setTimeout(()=>{socket.emit("getChatHistory"); console.log("emit timeout");}, 1900)
+}
+rtout()
+//tOut=setTimeout(()=>{socket.emit("getChatHistory"); console.log("emit timeout"); }, 1900)
 
 console.log("diadhawd")
 socket.on("runOnceDevLoad", (chatHistory)=>{
+
     clearTimeout(tOut)
     console.log("inicc dev", chatHistory)
 
@@ -100,6 +107,11 @@ socket.on("runOnceDevLoad", (chatHistory)=>{
 
 })
 
+/*
+socket.on("ConnectionSuccess", ()=>{
+    console.log("connected")}
+)
+*/
 
 
 function sendMessage(messageText) {

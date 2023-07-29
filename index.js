@@ -74,7 +74,7 @@ app.get("/reloadDatabase", (req, res) => {
 
 app.get("/resetDatabase", (req, res) => {
 	data={
-		'31-5-2023 20-15-15': { messageContent: 'Inicio de chat', senderName: '-info' }
+		'*Inicio': { messageContent: 'Inicio del chat', senderName: ' ' }
 	}
 	requ = fetch("https://chatwebapp-4jf59-default-rtdb.firebaseio.com/messageHistory.json", {
 		method: 'put',
@@ -96,9 +96,11 @@ app.get("/resetDatabase", (req, res) => {
 // }
 io.on("connection", (socket) => {
 	console.log("newconnection", "socket")
+	socket.emit("ConnectionSuccess")
 
 	socket.on("getChatHistory", (data) => {
 		console.log("chathistory fetched", messageHistory)
+		
 		socket.emit("runOnceDevLoad", messageHistory)
 
 	})
