@@ -23,7 +23,13 @@ io=socketio(server)
 function getCurrentTime() {
 	today=new Date();
     hour=today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
-    date=new Date().toLocaleDateString("co-CO")+" "+hour //T instead of " "
+    
+    //date = new Date().toLocaleDateString("co-CO") + " " + hour //T instead of " "
+
+	aap=today.toLocaleDateString("co-CO").split("/").reverse(); 
+    bigdate=`${aap[0]}-${aap[1]}-${aap[2]}`
+    
+    date = bigdate + " " + hour //T instead of " "
 
 	while (date.indexOf("/") != -1) {
 		date = date.replace("/", "-")
