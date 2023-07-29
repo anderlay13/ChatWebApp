@@ -27,7 +27,7 @@ function getCurrentTime() {
     //date = new Date().toLocaleDateString("co-CO") + " " + hour //T instead of " "
 
 	aap=today.toLocaleDateString("co-CO").split("/").reverse(); 
-    bigdate=`${aap[0]}-${aap[1]}-${aap[2]}`
+    bigdate=`${aap[0]}-${aap[2]}-${aap[1]}`
     
     date = bigdate + " " + hour //T instead of " "
 
