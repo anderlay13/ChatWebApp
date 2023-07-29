@@ -109,7 +109,7 @@ io.on("connection", (socket) => {
 		Object.keys(data).forEach((timestampr) => {
 			console.log("indawdi", data, timestampr)
 			// messageHistory[timestamp] = data[timestampr]
-			message[timestamp] = data[timestampr]})
+			message[timestampr] = data[timestampr]})   //message[timestamp] for more secure 
 		messageHistory={...messageHistory, ...message}
 
 		requ = fetch("https://chatwebapp-4jf59-default-rtdb.firebaseio.com/messageHistory.json", {
