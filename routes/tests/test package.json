@@ -18,16 +18,11 @@
     "needle": "^2.5.2",
     "node-fetch": "^2.6.1",
     "sanitize-html": "^2.2.0",
-    "socket.io": "^4.7.2",
+    "socket.io": "^2.3.0",
     "sync-fetch": "^0.3.0"
   },
   "devDependencies": {
-    "eslint": "^8.47.0",
     "nodemon": "^2.0.6"
   },
-  "description": "",
-  "optionalDependencies": {
-    "bufferutil": "^4.0.7",
-    "utf-8-validate": "^5.0.10"
-  }
+  "description": ""
 }

@@ -3,16 +3,18 @@ let messageHolder = document.querySelector("#messageHolder")
 let chatControls = document.querySelector("#chatControls")
 let messageToSend = chatControls.querySelector("input")
 
-let quickestver=true
+let quickestver=false
 chatControls.addEventListener("submit", (e) => {
     e.preventDefault();
+    
     if (messageToSend.value !== ""  ) {
-        cleanedSpecChars=messageToSend.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x00-\x7F]/g, "");
-        if (cleanedSpecChars !=="" && quickestver){
-            sendMessage(cleanedSpecChars)
-        }else if (cleanedSpecChars !==""){
-            sendMessage(messageToSend.value)
-        }
+        sendMessage(messageToSend.value)
+        // cleanedSpecChars=messageToSend.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x00-\x7F]/g, "");
+        // if (cleanedSpecChars !=="" && quickestver){
+        //     sendMessage(cleanedSpecChars)
+        // }else if (cleanedSpecChars !==""){
+        //     sendMessage(messageToSend.value)
+        // }
         window.scrollTo(0, document.body.scrollHeight);
         messageToSend.value = ""
     }
@@ -59,6 +61,8 @@ function appendNewMessage(message, mymessage = false) {
 
         console.log(timestamp, message[timestamp]);
     });
+    window.scrollTo(0, document.body.scrollHeight);
+
 
 }
 // btn = document.getElementById("btn")
@@ -88,7 +92,16 @@ function getCurrentTime() {
 
 var socket = io();
 
-socket.emit("getChatHistory");
+socket.emit("getChatHistory", (chatHistory)=>{
+
+    clearTimeout(tOut)
+    console.log("inicc dev", chatHistory)
+
+    messageHolder.replaceChildren()
+    console.log("replac")
+    appendNewMessage(chatHistory)
+
+});
 let tOut
 
 function rtout(){
@@ -103,6 +116,8 @@ socket.on("runOnceDevLoad", (chatHistory)=>{
     clearTimeout(tOut)
     console.log("inicc dev", chatHistory)
 
+    messageHolder.replaceChildren()
+    console.log("replac")
     appendNewMessage(chatHistory)
 
 })
@@ -126,7 +141,7 @@ socket.on("newConnection", (data) => {
     // alert(data)
 })
 socket.on("newMessage", (data) => {
-    window.scrollTo(0, document.body.scrollHeight);
+    // window.scrollTo(0, document.body.scrollHeight);
     appendNewMessage(data)
     
 
@@ -139,4 +154,5 @@ socket.on("log", (data) => {
 // socket.emit("getChatHistory")
 
 console.log("end")
+
  

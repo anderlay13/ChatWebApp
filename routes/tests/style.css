@@ -1,0 +1,227 @@
+body{
+    font-family: Arial, Helvetica,  sans-serif;
+    display: grid;
+    justify-items: center;
+    background-color: #08060E;
+    /* background-image: url(https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?cs=srgb&dl=pexels-henry-%26-co-1939485.jpg&fm=jpg&_gl=1*l18whi*_ga*MTQ2NDgxNTAwOC4xNjg1NTAxNDYx*_ga_8JE65Q40S6*MTY4NTUwMTQ2NS4xLjEuMTY4NTUwMjYzMC4wLjAuMA..); */
+}
+
+body::before{
+  filter: invert();
+}
+/* Estilo para el contenedor del chat */
+#chatContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    /* filter: blur(8px); */
+    background-color: #080914;
+    /*backdrop-filter: blur(10px);  */
+  }
+  
+  /* Estilo para el encabezado del chat */
+  #chatHeader {
+    background-color: #075e54;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  #chatHeader {
+    background-color: #075e54;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  /* Estilo para el título del chat */
+  #chatHeader h3 {
+    margin: 0;
+  }
+  
+  /* Estilo para el contenedor de los mensajes */
+  #messageHolder {
+    list-style-type: none;
+    /*margin: 0;*/
+    padding: 0;
+    font-size: medium;
+  }
+  
+  /* Estilo para los mensajes */
+  .messageItem {
+    display: flex;
+    margin-bottom: 11px;
+  }
+  
+  /* Estilo para los mensajes propios */
+  .messageItem.Own {
+    flex-direction: row-reverse;
+  }
+
+  .messageItem.Own>.messageContent{
+    background-color: #0c8a7b;
+  }
+  
+  /* Estilo para el contenido del mensaje */
+  .messageContent {
+    color: #FDFFFC;
+    background-color: #2C4251;
+    border-radius: 10px;
+    padding: 10px;
+
+  }
+  
+  /* Estilo para los metadatos del mensaje */
+  .messageMetadata {
+    color: #575656;
+    font-size: smaller;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  /* Estilo para el formulario de envío de mensajes */
+  #chatControls {
+    display: flex;
+    position: sticky;
+  }
+  
+  /* Estilo para el campo de entrada de texto */
+  #chatControls input[type="text"] {
+    flex-grow: 1;
+    height: 2.23rem;
+    border-radius: 8px 0px 0px 8px;
+    background-color: #f0f0f0;
+    border-width: 0px;
+    border-style: none;
+    font-size: medium;
+    margin-right: 5px;
+    
+    
+  }
+  
+  /* Estilo para el botón de envío de mensajes */
+  #chatControls button[type="submit"] {
+    background-color: #075e54;
+    border-radius: 0px 7px 7px 0px;
+    color: #fff;
+    /* width: 2rem; */
+    /* padding: 14px; */
+    border-width: 0px;
+    border-style: none;
+  }
+  #chatWebApp{
+    width: 70%;
+    border-radius: 90%;
+
+  }
+
+  #chatList {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ccc;
+    overflow-y: scroll;
+}
+
+#chatHolder {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chatItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.chatItem:hover {
+    background-color: #e0e0e0;
+}
+
+.chatThumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+}
+
+.chatName {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+#chatContainer {
+    width: 75%;
+    height: 100%;
+    float: right;
+}
+
+
+/* Remove the old styles for the chatContainer and chatHeader */
+#chatContainer {
+    width: 75%;
+    height: 100%;
+    float: right;
+    /* Other styles... */
+}
+
+/* Add styles for the chatList */
+#chatList {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ccc;
+    overflow-y: scroll;
+    /* Other styles... */
+}
+
+/* Adjust styles for chatItem to fit the new layout */
+.chatItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.chatItem:hover {
+    background-color: #e0e0e0;
+}
+
+.chatThumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+}
+
+.chatName {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+/* Adjust chatWebApp width */
+#chatWebApp {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+

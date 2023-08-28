@@ -1,111 +1,278 @@
-body{
-    font-family: Arial, Helvetica,  sans-serif;
-    display: grid;
-    justify-items: center;
-    background-color: #08060E;
-    /* background-image: url(https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?cs=srgb&dl=pexels-henry-%26-co-1939485.jpg&fm=jpg&_gl=1*l18whi*_ga*MTQ2NDgxNTAwOC4xNjg1NTAxNDYx*_ga_8JE65Q40S6*MTY4NTUwMTQ2NS4xLjEuMTY4NTUwMjYzMC4wLjAuMA..); */
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	display: grid;
+	justify-items: center;
+	background-color: #08060E;
+	margin: 0%;
+	/* background-image: url(https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?cs=srgb&dl=pexels-henry-%26-co-1939485.jpg&fm=jpg&_gl=1*l18whi*_ga*MTQ2NDgxNTAwOC4xNjg1NTAxNDYx*_ga_8JE65Q40S6*MTY4NTUwMTQ2NS4xLjEuMTY4NTUwMjYzMC4wLjAuMA..); */
 }
 
-body::before{
-  filter: invert();
+*::-webkit-scrollbar{
+	background-color: #424242;
 }
+*::-webkit-scrollbar-thumb{
+	background-color: gray;
+}
+*::-webkit-scrollbar-button{
+	background-color: gray;
+}
+*::-webkit-scrollbar-corner{
+	background-color: rgb(121, 48, 48);
+}
+
+
+body::before {
+	filter: invert();
+}
+
+
 /* Estilo para el contenedor del chat */
 #chatContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 10px;
-    /* filter: blur(8px); */
-    background-color: #080914;
-    backdrop-filter: blur(10px);  }
-  
-  /* Estilo para el encabezado del chat */
-  #chatHeader {
-    background-color: #075e54;
+	/* display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 75%; */
+
+	/* padding: 10px; */
+	/* filter: blur(8px); */
+	/* background-color: #080914; */
+	/*backdrop-filter: blur(10px);  */
+}
+
+/* Estilo para el encabezado del chat */
+#chatHeader {
+	background-color: #075e54;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+}
+#chatContainer #chatHeader{
+	position: sticky;
+	top: 0;
+
+}
+
+/* Estilo para el título del chat */
+#chatHeader h3 {
+	margin: 0;
+}
+
+/* Estilo para el contenedor de los mensajes */
+#messageHolder {
+	list-style-type: none;
+	/*margin: 0;*/
+	padding: 0;
+	font-size: medium;
+	margin: 1%;
+}
+
+/* Estilo para los mensajes */
+.messageItem {
+	display: flex;
+	margin-bottom: 11px;
+}
+
+/* Estilo para los mensajes propios */
+.messageItem.Own {
+	flex-direction: row-reverse;
+}
+
+.messageItem.Own > .messageContent {
+	background-color: #0c8a7b;
+}
+
+/* Estilo para el contenido del mensaje */
+.messageContent {
+	color: #FDFFFC;
+	background-color: #2C4251;
+	border-radius: 10px;
+	padding: 10px;
+	word-wrap: break-word;
+	max-width: 53%;
+
+}
+
+/* Estilo para los metadatos del mensaje */
+.messageMetadata {
+	color: #5e5e5e;
+	font-size: smaller;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Estilo para el formulario de envío de mensajes */
+#chatControls {
+	display: flex;
+	position: sticky;
+	bottom: 0;
+	background-color: #080914;
+	padding: 0.5rem;
+	padding-top: 0.7rem;
+}
+
+/* Estilo para el campo de entrada de texto */
+#chatControls input[type="text"] {
+	flex-grow: 1;
+	height: 2.23rem;
+	border-radius: 8px 0px 0px 8px;
+	background-color: #f0f0f0;
+	border-width: 0px;
+	border-style: none;
+	font-size: medium;
+	margin-right: 5px;
+
+
+}
+
+/* Estilo para el botón de envío de mensajes */
+#chatControls button[type="submit"] {
+	background-color: #075e54;
+	border-radius: 0px 7px 7px 0px;
+	color: #fff;
+	/* width: 2rem; */
+	/* padding: 14px; */
+	border-width: 0px;
+	border-style: none;
+}
+
+#chatWebApp {
+	display: flex;
+	width: 100%;
+	flex-direction: row-reverse;
+	border-radius: 90%;
+
+}
+
+
+#chatHolder {
+	list-style: none;
+	margin: 1%;
+	padding: 0;
+}
+
+.chatItem {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.chatItem:hover {
+	background-color: #e0e0e0;
+}
+
+.chatThumbnail {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #ccc;
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 40px;
+}
+
+.chatName {
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+
+/* Add styles for the chatList */
+#chatList {
+	width: 25%;
+	height: 99vh;
+	float: left;
+	background-color: #2b2b2b;
+	border-right: 1px solid #ccc;
+	overflow-y: auto;
+	top: 0;
+	position: sticky;
+	color: #ffd;
+	/* Other styles... */
+}
+#chatList #chatHeader{
+	justify-content: space-between;
+	background-color: #2b2b2b;
+	margin-left: 3%;
+
+}
+#chatHeader #newChat{
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
     color: #fff;
+    border-radius: 50%;
+	border: none;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 60px;
-  }
-  
-  /* Estilo para el título del chat */
-  #chatHeader h3 {
-    margin: 0;
-  }
-  
-  /* Estilo para el contenedor de los mensajes */
-  #messageHolder {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-size: medium;
-  }
-  
-  /* Estilo para los mensajes */
-  .messageItem {
-    display: flex;
-    margin-bottom: 11px;
-  }
-  
-  /* Estilo para los mensajes propios */
-  .messageItem.Own {
-    flex-direction: row-reverse;
-  }
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);}
 
-  .messageItem.Own>.messageContent{
-    background-color: #0c8a7b;
-  }
-  
-  /* Estilo para el contenido del mensaje */
-  .messageContent {
-    color: #FDFFFC;
-    background-color: #2C4251;
-    border-radius: 10px;
-    padding: 10px;
+/* Adjust styles for chatItem to fit the new layout */
+.chatItem {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	background-color: #3f3f3f;
+	border-radius: 5px;
+	margin-bottom: 0.5em;
+	/* border-bottom: 1px solid #ccc; */
+}
 
-  }
-  
-  /* Estilo para los metadatos del mensaje */
-  .messageMetadata {
-    color: #575656;
-    font-size: smaller;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  
-  /* Estilo para el formulario de envío de mensajes */
-  #chatControls {
-    display: flex;
-    position: sticky;
-  }
-  
-  /* Estilo para el campo de entrada de texto */
-  #chatControls input[type="text"] {
-    flex-grow: 1;
-    height: 2.23rem;
-    border-radius: 8px 0px 0px 8px;
-    background-color: #f0f0f0;
-    border-width: 0px;
-    border-style: none;
-    font-size: medium;
-    margin-right: 5px;
-    
-    
-  }
-  
-  /* Estilo para el botón de envío de mensajes */
-  #chatControls button[type="submit"] {
-    background-color: #075e54;
-    border-radius: 0px 7px 7px 0px;
-    color: #fff;
-    /* width: 2rem; */
-    /* padding: 14px; */
-    border-width: 0px;
-    border-style: none;
-  }
-  #chatWebApp{
-    width: 70%;
-    border-radius: 90%;
+.chatItem:hover {
+	background-color: #e0e0e0;
+	color: #3f3f3f;
+}
 
-  }
+.chatThumbnail {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #ccc;
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 40px;
+}
+
+.chatName {
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+/* Adjust chatWebApp width */
+#chatContainer {
+	width: 75%;
+	max-width: 75vw;
+	/* height: 100%; */
+	/* float: right; */
+	margin-left: 2px;
+	display: flex;
+	flex-direction: column;
+	background-color: #080914;
+
+	/* Other styles... */
+}
+
+
+/* Remove the old styles for the chatContainer and chatHeader */
+/* .popupDialog{
+	position: fixed;
+	display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);	
+	width: 40vh;
+	height: 10vw;
+	padding: 2vh 4vw 2vh 4vw;
+	background-color: black;
+	color: white;
+	z-index: 9999;
+} */

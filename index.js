@@ -40,6 +40,7 @@ function getCurrentTime() {
 	while (date.indexOf(".") != -1) {
 		date = date.replace(".", "-")
 	}
+	console.log("time measuerd")
 	return date
 }
 
@@ -94,15 +95,96 @@ app.get("/resetDatabase", (req, res) => {
 // if (requ.status != 200) {
 // 	io.sockets.emit("notify", { title: "Something went wrong", options: { body: "Saving queue got " + requ.status + " status." } })
 // }
+let chats={
+	12345678:{
+		name:"Chat's Name",
+		users:[132562231, 1314523243],
+		chatHistory:[{
+			timestamp:"2023-08-21 16-25-31",
+			senderName:"Name",
+			messageContent:"textsent",
+			userid:"userid"
+		}],
+		roles:{
+			"normal":[2131789, 2138917],
+			"admin":[218739, 12785739]
+		}
+	}
+}
+filter4name={
+	chatName:(name)=>{
+	}
+}
+function filterName (name, nameType){
+	switch (nameType){
+		case "chatName":
+			if (name.length>=16 ){
+				return [400, "LongName"]
+			}
+			name.trim()
+			return name
+
+	
+	}
+}
+
+function create_UUID(){
+    var dt = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+}
+
+// chatConfigs={
+// 	name:"chat name",
+// 	profilePicture:"link here",
+// 	users:[12378998, 1236990]
+// }
+
+// 12345678:{
+// 	name:"Chat's Name",
+// 	users:[132562231, 1314523243],
+// 	chatHistory:[{
+// 		timestamp:"2023-08-21 16-25-31",
+// 		senderName:"Name",
+// 		messageContent:"textsent",
+// 		userid:"userid"
+// 	}],
+// 	roles:{
+// 		"normal":[2131789, 2138917],
+// 		"admin":[218739, 12785739]
+// 	}
+// }
+
+
+function newChat(chatConfigs){
+
+	protoChat = {}
+	protoChat.name= filterName(chatConfigs.name, "chatName")
+	protouuid= create_UUID()
+	while(!!!chats[protouuid]){
+		protouuid= create_UUID()
+	}
+	!!chatConfigs.profilePicture?false:protoChat.profilePicture
+
+	chats[protouuid]
+	// Object.assign(chats, protoChat)
+
+
+}
 io.on("connection", (socket) => {
 	console.log("newconnection", "socket")
 	socket.emit("ConnectionSuccess")
 
-	socket.on("getChatHistory", (data) => {
+	socket.on("getChatHistory", (callback, data) => {
 		console.log("chathistory fetched", messageHistory)
 		
-		socket.emit("runOnceDevLoad", messageHistory)
-
+		// socket.emit("runOnceDevLoad", messageHistory)
+		console.log(data, callback)
+		callback(messageHistory)
 	})
 	socket.on("sendMessage", (data) => {
 		// data={senderName, messageContent}
@@ -122,7 +204,7 @@ io.on("connection", (socket) => {
 		// if(requ.status!=200){
 		// 	io.sockets.emit("notify", {title:"Something went wrong", options:{body:"Saving queue got "+ requ.status + " status."}})
 		// }
-		console.log("new message emitted " + message, Object.keys(message), Object.values(message), data, timestamp)
+		console.log("new message emitted " + message, Object.keys(message), Object.values(message), data, timestamp, "a")
 		
 		socket.broadcast.emit("newMessage", data)
 	})

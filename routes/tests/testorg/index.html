@@ -7,24 +7,20 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>ChatWebApp</title>
 </head>
-<body class="darkModeScrollbar">
-    <!-- <div class="popupDialog">
-        <span>new chat</span>
-    </div> -->
+<body>
     <div id="chatWebApp">
+        <div id="chatHeader">
+            <h3>-Mensajes-</h3>
+        </div>
         <div id="chatContainer">
-            <div id="chatHeader">
-                <h3>-Mensajes-</h3>
-            </div>
-    
             <ul id="messageHolder">
                 <!-- <div class="messageItem">
-                    <li class="messageContent">test1</li>
-                    <span class="messageMetadata">2023-1</span>
-                </div> 
-                <div class="messageItem Own">
-                    <li class="messageContent">test2</li>
-                    <span class="messageMetadata">2023-2</span>
+                    <li class="messageContent"></li>
+                    <span class="messageMetadata"></span>
+                </div> -->
+                <!-- <div class="messageItem Own">
+                    <li class="messageContent"></li>
+                    <span class="messageMetadata"></span>
                 </div> -->
 
             </ul>
@@ -35,12 +31,6 @@
         </div>
 
         <div id="chatList">
-            <div id="chatHeader">
-                <h3>-Chats-</h3>
-                <button id="newChat">+</button>
-
-            </div>
-
             <ul id="chatHolder">
                 <li class="chatItem">
                     <span class="chatThumbnail">A</span>
@@ -48,7 +38,7 @@
                 </li>
                 <li class="chatItem">
                     <span class="chatThumbnail">B</span>
-                    <p class="chatName" >Bruno</p>
+                    <p class="chatName">Bruno</p>
                 </li>
                 <li class="chatItem">
                     <span class="chatThumbnail">C</span>
@@ -59,8 +49,7 @@
     </div>
 </body>
 <link rel="stylesheet" href="style.css">
-<!-- <script defer src="/socket.io.js"></script> -->
-<script src="/socket.io/socket.io.js"></script>
+<script defer src="/socket.io.js"></script>
 
 
 <script defer src="/socker.js"></script>
